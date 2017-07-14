@@ -1,0 +1,54 @@
+import random
+try:
+    containerAnzahl = int(input("Geben Sie die Anzahl der Container an: "))
+except ValueError:
+    containerAnzahl = int(input("Geben Sie eine ZAHL ein: "))
+        
+waggonAnzahl = containerAnzahl
+
+listeContainer = []
+listeKran = []
+listeWaggon = []
+for i in range(1,containerAnzahl+1):
+    listeContainer.append(i)
+for i in range(1,waggonAnzahl+1):
+    listeWaggon.append(i)
+
+random.shuffle(listeContainer)
+listeKran = listeContainer
+    
+print(listeContainer)
+print(listeWaggon)    
+
+
+def fertig():
+    fertig_ = True
+    for i in range(containerAnzahl):
+        if listeKran[i] != listeWaggon[i]:
+            fertig_ = False
+    return fertig_
+
+def match():
+    ende = fertig()
+    pos = 0
+    while ende == False:
+            
+        #if listeKran[pos] == listeWaggon[pos]:
+            #pos += 1
+        #else:
+        IST_Con = int(listeContainer[pos])
+            #IST_Wag = int(listeContainer[IST_Con-1])
+        listeKran[IST_Con-1] = IST_Con
+            #pos = IST_Wag-1
+        pos += 1
+        
+        print(listeKran)
+        print(listeWaggon)
+            
+        ende = fertig()
+    
+listeContainer = listeKran
+print(listeContainer)
+print(listeWaggon)
+
+match()
